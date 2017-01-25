@@ -109,7 +109,19 @@ This isn't a perfect Bootstrap4 completion, needs edits before perfect.
                                     <span class="input-group-addon" id="basic-addon2"><span class=" glyphicon glyphicon-search"></span></span> -->
                                 </div>
                                 <div style="overflow-y: scroll; height: 200px;">
-                                    <table id="tableClasses" class="table table-hover">
+                                    <table id="tableClasses" class="table table-hover" style="font-size: 14px;">
+                                        <tbody>
+                                            <tr style="border-top: none;">
+                                                <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
+                                                <td>CS-310</td>
+                                                <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
+                                                <td>CS-310</td>
+                                                <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+                                            </tr>
+                                        </tbody>
                                         <!-- Uses Angular1
 
                                         <tr id="{{$index}}" ng-repeat="class in $ctrl.classes" ng-click="$ctrl.addThisClass($event)">
@@ -120,49 +132,24 @@ This isn't a perfect Bootstrap4 completion, needs edits before perfect.
                                     </table>
                                 </div>
                             </div>
-                            <!-- DON'T TOUCH
-                            <style>
-                            #popup-container {
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-                            }
-                            
-                            .row {
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
-                                width: 100%;
-                            }
-                            
-                            #button-row {
-                                justify-content: flex-end;
-                            }
-                            </style>
-                            <div id="popup-container">
-                                <div class="row">
-                                    <h5>Classes in queue.</h5>
-                                </div>
-                                <div class="row">
-                                    <span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures CS-310 Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span>
-                                </div>
-                                <div class="row" id="button-row">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div> -->
-                            <!-- BELOW TO BE FIXED -->
                             <div class="modal-footer" id="modalFooter">
-                                <h5>Classes in queue.</h5>
-                                <table class="table table-hover clearfix text-left" style="text-align: left !important; font-size: .9em;">
-                                    <tbody>
-                                        <tr style="border-top: none;">
-                                            <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
-                                            <td>CS-310</td>
-                                            <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Classes in queue.</h5>
+                                        </div>
+                                    </div>
+                                    <table class="table table-hover clearfix text-left" style="text-align: left !important; font-size: .9em;">
+                                        <tbody>
+                                            <tr style="border-top: none;">
+                                                <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
+                                                <td>CS-310</td>
+                                                <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                             <!-- *Comment Start* Here we can have the data pulled, inserted in an object and we can insert that data here just like we did in the tableClasses while incrementing the id of each with {{$index}} *End Comment* -->
                             <!-- Uses Angular1
