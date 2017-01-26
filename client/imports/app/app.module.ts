@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 */
 import { AppComponent } from './app.component';
 import { SEMESTERS_DECLARATIONS } from './semesters';
+import { REQUIREMENTS_DECLARATIONS } from './requirements';
+
  
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { SEMESTERS_DECLARATIONS } from './semesters';
   declarations: [
     AppComponent,
     ...SEMESTERS_DECLARATIONS,
+    ...REQUIREMENTS_DECLARATIONS,
   ],
   bootstrap: [
     AppComponent
