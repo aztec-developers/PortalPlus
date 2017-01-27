@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+/*
+	Import styles
+*/
 import template from './requirements.component.html';
 import style from './requirements.component.scss';
 
