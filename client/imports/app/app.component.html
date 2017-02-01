@@ -35,20 +35,24 @@
         <div class="col-sm-2 sidenav">
             <ul class="navbar-side" id="navbarSide">
                 <!-- Made whole block clickable -->
+
+                <!-- click functions to show each part of the site in the content
+                view. -->
+
                 <a href="#" class="side-link">
-                    <li class="navbar-side-item">Degree Evaluation</li>
+                    <li class="navbar-side-item" (click)="show = 1">Degree Evaluation</li>
                 </a>
                 <a href="#" class="side-link">
-                    <li class="navbar-side-item">My Map</li>
+                    <li class="navbar-side-item" (click)="show = 2">My Map</li>
                 </a>
                 <a href="#" class="side-link">
-                    <li class="navbar-side-item">Course Catalog</li>
+                    <li class="navbar-side-item" (click)="show = 3">Course Catalog</li>
                 </a>
                 <a href="#" class="side-link">
-                    <li class="navbar-side-item">Major Classes</li>
+                    <li class="navbar-side-item" (click)="show = 4">Major Classes</li>
                 </a>
                 <a href="#" class="side-link">
-                    <li class="navbar-side-item">Major Electives</li>
+                    <li class="navbar-side-item" (click)="show = 5">Major Electives</li>
                 </a>
             </ul>
         </div>
@@ -66,34 +70,31 @@
                 </div>
             </div>
             <!-- Requirements Componenent -->
-            <div class="row component-padding">
+
+            <!-- *ngIf for showing the requirements when the button
+            is pushed -->
+
+            <div *ngIf="show == 1" class="row component-padding">
                 <div class="col-12">
                     <requirements></requirements>
                 </div>
+
             </div>
             <!-- Semesters Components -->
-            <!-- 
+            <!--
                 Must be implemented this way, because putting
-                the col-6 inside the component (which you think 
-                would work) doesn't work the way it is working 
+                the col-6 inside the component (which you think
+                would work) doesn't work the way it is working
                 here.
             -->
-            <div class="row component-padding">
-                <div class="col-6">
-                    <semesters></semesters>
-                </div>
-                <div class="col-6">
-                    <semesters></semesters>
-                </div>
-            </div>
-            <div class="row component-padding">
-                <div class="col-6">
-                    <semesters></semesters>
-                </div>
+
+
+            <div class="row component-padding" *ngIf="show == 2">
                 <div class="col-6">
                     <semesters></semesters>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

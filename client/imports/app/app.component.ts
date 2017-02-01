@@ -22,8 +22,4 @@ export App Component Class with an array of course objects.
 constructor with zone() connects the changes in the collection into view.
 */
 export class AppComponent {
-  courses: Observable<Course[]>;
-  constructor(){
-   this.courses = Courses.find({}).zone();
-  }
 }

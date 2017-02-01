@@ -5,46 +5,52 @@
                 </div>
             </div>
             End Progress Bar -->
-<div class="req-tab" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="card">
-        <a class="req-tab" data-toggle="collapse" data-parent="#accordion" href="#collapse-one" aria-expanded="false" aria-controls="collapse-one">
-            <div class="card-header" role="tab" id="heading-one">
-                <h5>
-                <span class="fa fa-check text-success" title="Completed"></span>
-                COMPETENCY REQUIREMENTS
-                <span class="fa fa-caret-down float-right" title="Drop Down"></span>
-                </h5>
-            </div>
-        </a>
-        <div id="collapse-one" class="collapse" role="tabpanel" aria-labelledby="heading-one">
-            <div class="card-block">
-                You have completed this requirement.
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <a class="req-tab" data-toggle="collapse" data-parent="#accordion" href="#collapse-two" aria-expanded="false" aria-controls="collapse-two">
-            <div class="card-header" role="tab" id="heading-two">
-                <h5>
-                <span class="fa fa-remove text-danger" title="Incomplete">&nbsp;</span>
-                GRADUATION WRITING ASSESSMENT REQUIREMENT
-                <span class="fa fa-caret-down float-right" title="Drop Down"></span>
-                </h5>
-            </div>
-        </a>
-        <div id="collapse-two" class="collapse" role="tabpanel" aria-labelledby="heading-two">
-            <div class="card-block">
-                You have not completed this requirement. Please add a class from the list below.
-                <div class="input-group" style="padding-top: 10px;">
-                    <input type="text" class="form-control" placeholder="Search & Add a Class" aria-describedby="sizing-addon1">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><span class="fa fa-plus text-danger" title="Incomplete"></span></button>
-                    </span>
+
+              <div class="req-tab" id="accordion" role="tablist" aria-multiselectable="true">
+                <div *ngFor="let req of reqs | async; let i = index">
+                  <div *ngIf="req.status == 'complete'" class="card">
+
+                    <a class="req-tab" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{i}}" aria-expanded="false" attr.aria-controls="collapse-{{i}}">
+                      <div class="card-header" role="tab" id="heading-one">
+                        <h5>
+                          <span class="fa fa-check text-success" title="Completed"></span>
+                          {{req.name}}
+                          <span class="fa fa-caret-down float-right" title="Drop Down"></span>
+                        </h5>
+                      </div>
+                    </a>
+                    <div id="collapse-{{i}}" class="collapse" role="tabpanel" aria-labelledby="heading-one">
+                      <div class="card-block">
+                        You have completed this requirement.
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div *ngIf="req.status == 'incomplete'" class="card">
+                    <a class="req-tab" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{i}}" aria-expanded="false" attr.aria-controls="collapse-{{i}}">
+                      <div class="card-header" role="tab" id="heading-two">
+                        <h5>
+                          <span class="fa fa-remove text-danger" title="Incomplete">&nbsp;</span>
+                          {{req.name}}
+                          <span class="fa fa-caret-down float-right" title="Drop Down"></span>
+                        </h5>
+                      </div>
+                    </a>
+                    <div id="collapse-{{i}}" class="collapse" role="tabpanel" aria-labelledby="heading-two">
+                      <div class="card-block">
+                        You have not completed this requirement. Please add a class from the list below.
+                        <div class="input-group" style="padding-top: 10px;">
+                          <input type="text" class="form-control" placeholder="Search & Add a Class" aria-describedby="sizing-addon1">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="fa fa-plus text-danger" title="Incomplete"></span></button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!--         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
