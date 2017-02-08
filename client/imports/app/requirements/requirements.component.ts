@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Reqs} from '../../../../both/collections/reqs.collection';
-import {Req} from '../../../../both/models/req.model';
-import {Observable} from 'rxjs/Observable';
+import { Reqs } from '../../../../both/collections/reqs.collection';
+import { Req } from '../../../../both/models/req.model';
+import { Observable } from 'rxjs/Observable';
 /*
 	Import styles
 */

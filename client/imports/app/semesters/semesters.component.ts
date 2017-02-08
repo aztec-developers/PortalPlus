@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Courses} from '../../../../both/collections/courses.collection';
-import {Course} from '../../../../both/models/course.model';
-import {Observable} from 'rxjs/Observable';
+import { Courses } from '../../../../both/collections/courses.collection';
+import { Course } from '../../../../both/models/course.model';
+import { Observable } from 'rxjs/Observable';
 /*
 	Import any other internal components here.
 */

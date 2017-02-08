@@ -1,6 +1,6 @@
 /* 
 Gray Text: #e6e6e6
-Navbar & Footer: #292929 (#000 too bold)
+Navbar & Footer: #292929
 
 SDSU Colors
 http://newscenter.sdsu.edu/brand/brand_central_2015/webguidelines.aspx
@@ -16,6 +16,31 @@ HEX: #D2C694
 RGB: 210, 198, 148
 */
 
+.bg-inverse {
+    background-color: #333 !important;
+}
+
+a.nav-link {
+    color: #e6e6e6 !important;
+}
+
+a.nav-link:hover {
+    color: #C41230 !important;
+}
+
+.dropdown-menu {
+    background-color: #333;
+    z-index: 1060;
+}
+
+a.dropdown-item {
+    color: #e6e6e6;
+}
+
+a.dropdown-item:hover {
+    background-color: transparent;
+    color: #C41230;
+}
 
 /*
     Might stylize the sidenav a little
@@ -40,6 +65,7 @@ RGB: 210, 198, 148
 
 .side-link {
     color: #444;
+    text-decoration: none;
 }
 
 .side-link:hover {
@@ -67,6 +93,13 @@ RGB: 210, 198, 148
 
 .component-padding {
     padding: 10px 0px;
+}
+
+section.gpa {
+    border: solid 2px #C41230;
+    border-radius: 2px;
+    padding: 10px;
+    color: #C41230;
 }
 
 footer {
