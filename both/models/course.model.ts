@@ -1,5 +1,7 @@
 //Exporting the interface used for the components of each database object.
-export interface Course{
+import { CollectionObject } from './collection-object.model';
+
+export interface Party extends CollectionObject {
   units: string;
   label: string;
   name: string;

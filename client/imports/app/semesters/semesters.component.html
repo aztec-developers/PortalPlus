@@ -1,67 +1,3 @@
-<!-- 
-
-ANGULAR1 VERSION WITH BS3!!!
-
-<div class="panel-heading">
-  <h1 class="panel-title">Fall 2016</h1>
-</div>
-<table id="tableSemester0" class="table table-hover">
-  <tr>
-    <th>Units | Class Name</th>
-    <th>Class Number</th>
-    <th>Teacher</th>
-  </tr>
-  <tr id="{{$index}}" ng-repeat="class in $ctrl.semesterClasses">
-    <td><span class="badge pull-left">{{class.units}}</span>&nbsp; {{class.name}}</td>
-    <td>{{class.number}}</td>
-    <td>{{class.teacher}}<span class="glyphicon glyphicon-remove text-danger pull-right"></span></td>
-  </tr>
-</table>
-<button type="button" class="list-group-item" ng-click="" data-toggle="modal" data-target="#addClass">
-  Add a Class...<span class="glyphicon glyphicon-plus text-danger pull-right"></span>
-</button>
-<div id="addClass" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Classes to Fall 2016 Semester</h4>
-      </div>
-      <div class="modal-body">
-        <div class="input-group">
-          <input type="text" id="searchForClasses" class="form-control" ng-keyup="$ctrl.filterClasses()" placeholder="Search for Classes by Name..." aria-describedby="basic-addon2">
-          <span class="input-group-addon" id="basic-addon2"><span class=" glyphicon glyphicon-search"></span></span>
-        </div>
-        <div style="overflow-y: scroll; height: 200px;">
-          <table id="tableClasses" class="table table-hover">
-            <tr id="{{$index}}" ng-repeat="class in $ctrl.classes" ng-click="$ctrl.addThisClass($event)">
-              <td><span class="badge pull-left">{{class.units}}</span>&nbsp; {{class.name}}</td>
-              <td>{{class.number}}</td>
-              <td>{{class.teacher}}<span class="glyphicon glyphicon-plus text-danger pull-right"></span></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="modal-footer" id="modalFooter">
-        <h4 class="text-left">Classes in queue.</h4>
-
-        *Comment Start* Here we can have the data pulled, inserted in an object and we can insert that data here just like we did in the tableClasses while incrementing the id of each with {{$index}} *End Comment*
-
-        <table id="queuedClasses" class="table table-hover" style="text-align: left !important;">
-          <tbody>
-          </tbody>
-        </table>
-        <button type="button" id="addClasses" class="btn btn-default btn-danger" ng-click="$ctrl.tester()" data-dismiss="modal">Add Classes</button>
-
-        *Comment Start* <button type="button" id="addClasses" class="btn btn-default btn-danger" ng-click="$ctrl.finalizeClass()" data-dismiss="modal">Add Classes</button> *End Comment*
-        
-        <button type="button" id="removeClasses" class="btn btn-default btn-warning" ng-click="$ctrl.removeClasses()" data-dismiss="">Remove All Classes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
 <div class="card" id="semester">
     <div class="card-header">
         Summer 2017
@@ -72,15 +8,17 @@ ANGULAR1 VERSION WITH BS3!!!
             <th>Class Number</th>
             <th>Teacher</th>
         </tr>
-        <tr>
-            <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
-            <td>CS-310</td>
-            <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
-        </tr>
-        <tr>
-            <td><span class="badge badge-default" style="vertical-align: text-top;">3</span>&nbsp; Data Structures</td>
-            <td>CS-310</td>
-            <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+
+        <!-- Courses are now being pull from the database using *ngFor
+        {{course.parameter}} pulls that parameter for that course
+        and inserts it, the button will use the removeCourse() function
+        to remove that course from the courses database. -->
+
+        <tr *ngFor="let course of courses | async; let i = index">
+            <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp;{{course.name}}</td>
+            <td>{{course.label}}</td>
+            <td>Edwards <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class" ></span></td>
+            <button (click)="removeCourse(course)">X</button>
         </tr>
     </table>
     <button type="button" class="list-group-item list-group-item-action justify-content-between" data-toggle="modal" style="width: 100%;" data-target="#addClass">
@@ -151,7 +89,7 @@ ANGULAR1 VERSION WITH BS3!!!
                 <!-- *Comment Start* Here we can have the data pulled, inserted in an object and we can insert that data here just like we did in the tableClasses while incrementing the id of each with {{$index}} *End Comment* -->
                 <!-- Uses Angular1
 
-                                
+
                                 *Comment Start*
                                 <button type="button" id="addClasses" class="btn btn-default btn-danger" ng-click="$ctrl.finalizeClass()" data-dismiss="modal">Add Classes</button> *End Comment* -->
                 <!-- <button type="button" id="removeClasses" class="btn btn-default btn-warning" ng-click="$ctrl.removeClasses()" data-dismiss="">Remove All Classes</button> -->
