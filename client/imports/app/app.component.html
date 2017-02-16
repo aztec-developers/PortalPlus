@@ -16,89 +16,18 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">About Us</a>
                     <a class="dropdown-item" href="#">Join Us</a>
-                    <!-- <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" style="color: #e6e6e6;" href="#">Separated link</a> -->
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
+        <!-- ngIf user is logged in, show the logout button -->
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+        
     </div>
 </nav>
-<!-- Side Nav -->
-<div class="container-fluid text-left">
-    <div class="row">
-        <div class="col-sm-2 sidenav">
-            <ul class="navbar-side" id="navbarSide">
-                <!-- Made whole block clickable -->
+<homescreen></homescreen>
+<contentscreen></contentscreen>
 
-                <!-- click functions to show each part of the site in the content
-                view. -->
-
-                <a href="#" class="side-link">
-                    <li class="navbar-side-item" (click)="show = 1">Degree Evaluation</li>
-                </a>
-                <a href="#" class="side-link">
-                    <li class="navbar-side-item" (click)="show = 2">My Map</li>
-                </a>
-                <a href="#" class="side-link">
-                    <li class="navbar-side-item" (click)="show = 3">Course Catalog</li>
-                </a>
-                <a href="#" class="side-link">
-                    <li class="navbar-side-item" (click)="show = 4">Major Classes</li>
-                </a>
-                <a href="#" class="side-link">
-                    <li class="navbar-side-item" (click)="show = 5">Major Electives</li>
-                </a>
-            </ul>
-        </div>
-        <!-- Content View Page-->
-        <div class="col-lg-10 text-left" id="content-view">
-            <div class="row component-padding" style="padding-top: 20px;">
-                <div class="col-8">
-                    <section class="text-left">Your progress towards graduating is: <span style="color: #5CB85C; vertical-align: middle !important;">80%</span></section>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 20px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="col-2 text-center">
-                    <section class="gpa">GPA: 3.25</section>
-                </div>
-                <div class="col-2 text-center">
-                    <section class="gpa">Major GPA: 3.56</section>
-                </div>
-            </div>
-            <!-- Requirements Componenent -->
-
-            <!-- *ngIf for showing the requirements when the button
-            is pushed -->
-
-            <div *ngIf="show == 1" class="row component-padding">
-                <div class="col-12">
-                    <requirements></requirements>
-                </div>
-
-            </div>
-            <!-- Semesters Components -->
-            <!--
-                Must be implemented this way, because putting
-                the col-6 inside the component (which you think
-                would work) doesn't work the way it is working
-                here.
-            -->
-
-
-            <div class="row component-padding" *ngIf="show == 2">
-                <div class="col-6">
-                    <semesters></semesters>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 <!-- Footer -->
 <footer class="container-fluid text-center">
     <div class="d-flex justify-content-center">

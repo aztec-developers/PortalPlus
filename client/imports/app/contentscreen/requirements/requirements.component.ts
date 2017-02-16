@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Reqs } from '../../../../both/collections/reqs.collection';
-import { Req } from '../../../../both/models/req.model';
+import { Reqs } from '../../../../../both/collections/reqs.collection';
+import { Req } from '../../../../../both/models/req.model';
 import { Observable } from 'rxjs/Observable';
 /*
 	Import styles
@@ -13,7 +13,8 @@ import style from './requirements.component.scss';
 */
 @Component({
   selector: 'requirements',
-  template
+  template,
+  styles: [style]
 })
 export class RequirementsComponent {
   reqs: Observable<Req[]>;
