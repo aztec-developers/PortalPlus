@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 	Import all components
 */
 import { AppComponent } from './app.component';
-import { SEMESTERS_DECLARATIONS } from './semesters';
-import { REQUIREMENTS_DECLARATIONS } from './requirements';
+import { CONTENTSCREEN_DECLARATIONS } from './contentscreen';
+import { HOMESCREEN_DECLARATIONS } from './homescreen';
 
  
 @NgModule({
@@ -16,8 +16,9 @@ import { REQUIREMENTS_DECLARATIONS } from './requirements';
   // Use all declarations of the imported components, here.
   declarations: [
     AppComponent,
-    ...SEMESTERS_DECLARATIONS,
-    ...REQUIREMENTS_DECLARATIONS,
+    ...CONTENTSCREEN_DECLARATIONS,
+    ...HOMESCREEN_DECLARATIONS,
+    
   ],
   bootstrap: [
     AppComponent
