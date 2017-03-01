@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
+/*
+  Import collections
+*/
 import { Courses } from '../../../../../both/collections/courses.collection';
+import { QueuedCourses } from '../../../../../both/collections/queuedcourses.collection';
+import { SemesterCourses } from '../../../../../both/collections/semestercourses.collection';
+/*
+  Import models
+ */
 import { Course } from '../../../../../both/models/course.model';
 import { Observable } from 'rxjs/Observable';
 /*
 	Import any other internal components here.
 */
-
-// component path
 import template from './semesters.component.html';
 import style from './semesters.component.scss';
 
@@ -16,10 +22,14 @@ import style from './semesters.component.scss';
   styles: [style]
 })
 export class SemestersComponent {
-  courses: Observable<Course[]>;
+  // courses: Observable<Course[]>;
+  queuedcourses: Observable<Course[]>;
+  semestercourses: Observable<Course[]>;
 
   constructor() {
-    this.courses = Courses.find({}).zone();
+    // this.courses = Courses.find({}).zone();
+    this.semestercourses = SemesterCourses.find({}).zone();
+    this.queuedcourses = QueuedCourses.find({}).zone();
   }
 
 
@@ -27,6 +37,17 @@ export class SemestersComponent {
 // database
 
   removeCourse(course: Course): void {
-   Courses.remove(course._id);
- }
+    SemesterCourses.remove(course._id);
+  }
+
+  /*
+    addCourses() takes the QueuedCourses and Adds them to the SemesterCourses.
+  */
+  addCourses(): void {
+    var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}});
+    coursesToAdd.forEach( function(course) {
+      // console.log(myDoc);
+      SemesterCourses.insert(course);
+    });
+  }
 }
