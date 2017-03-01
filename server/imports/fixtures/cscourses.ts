@@ -1,13 +1,21 @@
-import { Courses } from '../../../both/collections/courses.collection';
+import { CsCourses } from '../../../both/collections/cscourses.collection';
 import { Course } from '../../../both/models/course.model';
 /*
 Populating the database with the data following the interface
 */
-export function loadCourses() {
-  if (Courses.find().cursor.count() === 0) {
-    const courses: Course[] = [{
-      units: '3',
-      label: 'CS-320',
+
+/*
+  Was previously used for loading the courses into the semester,
+  but that has now switched to SemesterCourses. 
+
+  This file may be used for something else, like getting the courses
+  from Mlabs db.
+*/
+export function loadCsCourses() {
+  if (CsCourses.find().cursor.count() === 0) {
+    const cscourses: Course[] = [{
+    units: '3',
+    label: 'CS-320',
     name: 'Programming Languages',
     importance: 'Required',
     status: 'Taken'
@@ -76,6 +84,6 @@ export function loadCourses() {
     status: ' Not Taken'
   }];
 
-    courses.forEach((course: Course) => Courses.insert(course));
+    cscourses.forEach((cscourse: Course) => CsCourses.insert(cscourse));
   }
 }

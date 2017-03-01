@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { Courses } from '../../../../../both/collections/courses.collection';
+/*
+  Import collections
+*/
+import { CsCourses } from '../../../../../both/collections/cscourses.collection';
+import { QueuedCourses } from '../../../../../both/collections/queuedcourses.collection';
+import { SemesterCourses } from '../../../../../both/collections/semestercourses.collection';
+/*
+  Import models
+ */
 import { Course } from '../../../../../both/models/course.model';
 import { Observable } from 'rxjs/Observable';
 /*
 	Import any other internal components here.
 */
-
-// component path
 import template from './semesters.component.html';
 import style from './semesters.component.scss';
 
@@ -15,18 +21,50 @@ import style from './semesters.component.scss';
   template,
   styles: [style]
 })
+
 export class SemestersComponent {
-  courses: Observable<Course[]>;
+  cscourses: Observable<Course[]>;
+  queuedcourses: Observable<Course[]>;
+  semestercourses: Observable<Course[]>;
 
   constructor() {
-    this.courses = Courses.find({}).zone();
+    this.cscourses = CsCourses.find({}).zone();
+    this.semestercourses = SemesterCourses.find({}).zone();
+    this.queuedcourses = QueuedCourses.find({}).zone();
   }
 
-
-// function to remove the course from the courses
-// database
-
+  /*
+    removeCourse() takes the course in the Semester and removes it.
+  */
   removeCourse(course: Course): void {
-   Courses.remove(course._id);
- }
+    SemesterCourses.remove(course._id);
+  }
+
+  /*
+    queueMoveBack() takes the course in Queue and moves it back 
+    into CsCourses (deletes from QueuedCourses)
+  */
+  queueMoveBack(course: Course): void {
+    QueuedCourses.remove(course._id);
+  }
+
+  /*
+    moveToQueue() takes the course from CsCourses and moves it into
+    QueuedCourses.
+  */
+  moveToQueue(course: Course): void {
+    QueuedCourses.insert(course);
+  }
+
+  /*
+    addCourses() takes the QueuedCourses and Adds them to the SemesterCourses.
+  */
+  addCourses(): void {
+    var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();
+    
+    coursesToAdd.forEach( function(course) {
+      // console.log(myDoc);
+      SemesterCourses.insert(course);
+    });
+  }
 }
