@@ -39,10 +39,10 @@
                     <div style="overflow-y: scroll; height: 200px;">
                         <table id="tableClasses" class="table table-hover" style="font-size: 14px;">
                             <tbody>
-                                <tr *ngFor="let courseXY of cscourses | async" (click)="moveToQueue(courseXY)" style="border-top: none;">
-                                    <td><span class="badge badge-default" style="vertical-align: text-top;">{{courseXY.units}}</span>&nbsp; {{courseXY.name}}</td>
-                                    <td>{{courseXY.label}}</td>
-                                    <td>{{courseXY.teacher}} <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+                                <tr *ngFor="let course of courses | async" (click)="moveToQueue(course)" style="border-top: none;">
+                                    <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp; {{course.name}}</td>
+                                    <td>{{course.label}}</td>
+                                    <td>{{course.teacher}} <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
                                 </tr>
                             </tbody>
                             <!-- Uses Angular1
@@ -64,10 +64,10 @@
                         </div>
                         <table class="table table-hover clearfix text-left" style="text-align: left !important; font-size: .9em;">
                             <tbody>
-                                <tr *ngFor="let courseZ of queuedcourses | async;" (click)="queueMoveBack(courseZ)">
-                                    <td><span class="badge badge-default" style="vertical-align: text-top;">{{courseZ.units}}</span>&nbsp;{{courseZ.name}}</td>
-                                    <td>{{courseZ.label}}</td>
-                                    <td>{{courseZ.teacher}} <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class"></span></td>
+                                <tr *ngFor="let course of queuedcourses | async;" (click)="queueMoveBack(course)">
+                                    <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp;{{course.name}}</td>
+                                    <td>{{course.label}}</td>
+                                    <td>{{course.teacher}} <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class"></span></td>
                                 </tr>
                             </tbody>
                         </table>
