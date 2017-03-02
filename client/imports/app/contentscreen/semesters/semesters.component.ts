@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 /*
   Import collections
 */
-import { CsCourses } from '../../../../../both/collections/cscourses.collection';
+import { Courses } from '../../../../../both/collections/courses.collection';
 import { QueuedCourses } from '../../../../../both/collections/queuedcourses.collection';
 import { SemesterCourses } from '../../../../../both/collections/semestercourses.collection';
 /*
@@ -23,12 +23,12 @@ import style from './semesters.component.scss';
 })
 
 export class SemestersComponent {
-  cscourses: Observable<Course[]>;
+  courses: Observable<Course[]>;
   queuedcourses: Observable<Course[]>;
   semestercourses: Observable<Course[]>;
 
   constructor() {
-    this.cscourses = CsCourses.find({}).zone();
+    this.courses = Courses.find({}).zone();
     this.semestercourses = SemesterCourses.find({}).zone();
     this.queuedcourses = QueuedCourses.find({}).zone();
   }
@@ -42,14 +42,14 @@ export class SemestersComponent {
 
   /*
     queueMoveBack() takes the course in Queue and moves it back 
-    into CsCourses (deletes from QueuedCourses)
+    into Courses (deletes from QueuedCourses)
   */
   queueMoveBack(course: Course): void {
     QueuedCourses.remove(course._id);
   }
 
   /*
-    moveToQueue() takes the course from CsCourses and moves it into
+    moveToQueue() takes the course from Courses and moves it into
     QueuedCourses.
   */
   moveToQueue(course: Course): void {
@@ -63,7 +63,7 @@ export class SemestersComponent {
     var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();
     
     coursesToAdd.forEach( function(course) {
-      // console.log(myDoc);
+      console.log(course);
       SemesterCourses.insert(course);
     });
   }
