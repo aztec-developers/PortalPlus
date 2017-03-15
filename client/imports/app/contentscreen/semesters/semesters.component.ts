@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import 'rxjs/add/operator/map';
 /*
   Import collections
 */
@@ -22,16 +25,20 @@ import style from './semesters.component.scss';
   styles: [style]
 })
 
-export class SemestersComponent {
+export class SemestersComponent  {
   courses: Observable<Course[]>;
   queuedcourses: Observable<Course[]>;
   semestercourses: Observable<Course[]>;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute
+  ) {
     this.courses = Courses.find({}).zone();
     this.semestercourses = SemesterCourses.find({}).zone();
     this.queuedcourses = QueuedCourses.find({}).zone();
   }
+
+
 
   /*
     removeCourse() takes the course in the Semester and removes it.
@@ -41,7 +48,7 @@ export class SemestersComponent {
   }
 
   /*
-    queueMoveBack() takes the course in Queue and moves it back 
+    queueMoveBack() takes the course in Queue and moves it back
     into Courses (deletes from QueuedCourses)
   */
   queueMoveBack(course: Course): void {
