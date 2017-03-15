@@ -38,26 +38,16 @@ RGB: 210, 198, 148
     border-right: 1px solid #888;
 }
 
-.side-link {
-    color: #444;
-    text-decoration: none;
-}
-
-.side-link:hover {
-    text-decoration: none;
-}
-
-.side-link li {
-    padding-left: 1rem;
-    border-bottom: 1px solid #d9cfa6;
-}
-
 .navbar-side-item:hover {
     background-color: #d9d0a6 !important;
 }
 
 .navbar-side-item {
-    padding: 1.25rem 0;
+    padding-left: 1rem;
+    border-bottom: 1px solid #d9cfa6;
+    color: #444;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
     margin: 0;
     height: 4rem;
 }
