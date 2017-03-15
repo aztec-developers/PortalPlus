@@ -5,10 +5,8 @@
         <div class="col-sm-2 sidenav">
             <ul class="navbar-side" id="navbarSide">
                 <!-- Made whole block clickable -->
-
                 <!-- click functions to show each part of the site in the content
                 view. -->
-
                 <a href="#" class="side-link">
                     <li class="navbar-side-item" (click)="show = 1">Degree Evaluation</li>
                 </a>
@@ -45,15 +43,12 @@
 
 
             <!-- Requirements Componenent -->
-
             <!-- *ngIf for showing the requirements when the button
             is pushed -->
-
             <div *ngIf="show == 1" class="row component-padding">
                 <div class="col-12">
                     <requirements></requirements>
                 </div>
-
             </div>
             <!-- Semesters Components -->
             <!--
@@ -62,13 +57,16 @@
                 would work) doesn't work the way it is working
                 here.
             -->
-
-
-            <div  *ngIf="show == 2">
-                <div class="col-6">
-                    <button style="margin:50px;" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Add Semester</button>
-                    <div class="row component-padding">
-                    <semesters></semesters>
+            <div *ngIf="show == 2">
+                <div class="row component-padding" style="padding-top: 20px;">
+                    <div class="col-6">
+                        <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                    </div>
+                </div>
+                <div class="row component-padding">
+                    <div class="col-6">
+                        <semesters></semesters>
+                    </div>
                 </div>
             </div>
         </div>
