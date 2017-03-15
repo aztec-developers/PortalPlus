@@ -37,7 +37,7 @@ export class SemestersComponent {
     removeCourse() takes the course in the Semester and removes it.
   */
   removeCourse(course: Course): void {
-    SemesterCourses.remove(course._id);
+    Meteor.call('removeCourseFromSemester', course);
   }
 
   /*
@@ -45,7 +45,7 @@ export class SemestersComponent {
     into Courses (deletes from QueuedCourses)
   */
   queueMoveBack(course: Course): void {
-    QueuedCourses.remove(course._id);
+    Meteor.call('removeCourseFromQueue', course);
   }
 
   /*
@@ -53,18 +53,13 @@ export class SemestersComponent {
     QueuedCourses.
   */
   moveToQueue(course: Course): void {
-    QueuedCourses.insert(course);
+    Meteor.call('moveCourseToQueue', course);
   }
 
   /*
     addCourses() takes the QueuedCourses and Adds them to the SemesterCourses.
   */
   addCourses(): void {
-    var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();
-    
-    coursesToAdd.forEach( function(course) {
-      console.log(course);
-      SemesterCourses.insert(course);
-    });
+    Meteor.call('addCourseToSemester');
   }
 }
