@@ -19,15 +19,17 @@
                 </div>
             </li>
         </ul>
-
-        <!-- ngIf user is logged in, show the logout button -->
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
-        
+    </div>
+    <!-- this stuff is hidden if the user is logged out -->
+    <div [hidden]="!user">
+        <!-- <span>{{ user | displayName }}</span> -->
+         <a [routerLink]="['/']" class="btn btn-outline-warning" (click)="logout()">SignOut</a>
     </div>
 </nav>
 
-<contentscreen></contentscreen>
-<homescreen></homescreen>
+<div>
+  <router-outlet></router-outlet>
+</div>
 <!-- Footer -->
 <footer class="container-fluid text-center">
     <div class="d-flex justify-content-center">
