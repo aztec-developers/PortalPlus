@@ -22,3 +22,5 @@ xolvio:cleaner
 hwillson:stub-collections
 dispatch:mocha-phantomjs
 shell-server@0.2.1
+accounts-password
+dotansimha:accounts-ui-angular
