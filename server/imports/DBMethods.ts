@@ -14,21 +14,21 @@ export const ServerDBMethods =
 	removeAllQueuedCourses: function() {
 	    // return QueuedCourses.remove({});
 	    QueuedCourses.remove({});
-  	},
-  	moveCourseToQueue: function(course: Course){
-  		QueuedCourses.insert(course);
-  	},
-  	removeCourseFromQueue: function(course: Course){
-  		QueuedCourses.remove(course._id);
-  	},
-  	removeCourseFromSemester: function(course: Course) {
-	    SemesterCourses.remove(course._id);
+  },
+  moveCourseToQueue: function(course: Course){
+  	QueuedCourses.insert(course);
 	},
-    addCourseToSemester: function() {
-    	var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();    
-    	coursesToAdd.forEach( function(course) {
-      		SemesterCourses.insert(course);
-    	});
-    	Meteor.call('removeAllQueuedCourses');
-    }
+	removeCourseFromQueue: function(course: Course){
+		QueuedCourses.remove(course._id);
+	},
+	removeCourseFromSemester: function(course: Course) {
+    SemesterCourses.remove(course._id);
+  },
+  addCourseToSemester: function() {
+  	var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();    
+  	coursesToAdd.forEach( function(course) {
+    		SemesterCourses.insert(course);
+  	});
+  	Meteor.call('removeAllQueuedCourses');
+  }
 }

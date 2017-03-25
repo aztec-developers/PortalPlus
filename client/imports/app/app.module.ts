@@ -19,7 +19,8 @@ import { LOGIN_SIGNUP_DECLARATIONS } from './login_signup';
     BrowserModule,
     AccountsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+
   ],
   // Use all declarations of the imported components, here.
   declarations: [
