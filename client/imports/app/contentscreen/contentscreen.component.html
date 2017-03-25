@@ -53,10 +53,38 @@
                         <button class="btn btn-outline-danger" type="submit">Add Semester</button>
                     </div>
                 </div>
+                
                 <div class="row component-padding">
-                    <div class="col-6">
+                    <div *ngFor="let semester of semesters | async;" class="col-6" style="margin-bottom: 10px;">
+                        <div class="card" id="semester">
+                            <div class="card-header">
+                                {{semester.name}}
+                            </div>
+                            <semesters></semesters>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-6" style="margin-bottom: 10px;">
                         <semesters></semesters>
                     </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div>
+                    <div class="col-6" style="margin-bottom: 10px;">
+                        <semesters></semesters>
+                    </div> -->
                 </div>
             </div>
         </div>
