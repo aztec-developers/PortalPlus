@@ -25,9 +25,11 @@ export const ServerDBMethods =
 	    SemesterCourses.remove(course._id);
 	},
     addCourseToSemester: function() {
-    	var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();    
+    	var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();
+
     	coursesToAdd.forEach( function(course) {
       		SemesterCourses.insert(course);
+			// Acourses.insert(Object.assign({}, course { owner: Meteor.userId() }));
     	});
     	Meteor.call('removeAllQueuedCourses');
     }
