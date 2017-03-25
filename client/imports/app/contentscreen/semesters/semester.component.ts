@@ -19,8 +19,8 @@ import { Observable } from 'rxjs/Observable';
 /*
   Import any other internal components here.
 */
-import template from './semesters.component.html';
-import style from './semesters.component.scss';
+import template from './semester.component.html';
+import style from './semester.component.scss';
 
 @Component({
   selector: 'semesters',

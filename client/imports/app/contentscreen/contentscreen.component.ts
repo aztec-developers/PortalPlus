@@ -25,7 +25,10 @@ import style from './contentscreen.component.scss';
 	template,
 	styles: [style]
 })
-export class ContentscreenComponent {
+
+@InjectUser('user')
+export class ContentscreenComponent implements OnInit {
+	user: Meteor.User;
   	semesters: Observable<Semester[]>;
 
   	/*
