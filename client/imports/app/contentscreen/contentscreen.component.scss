@@ -1,0 +1,68 @@
+/* 
+Gray Text: #444
+Light Gray Text: #e6e6e6
+Navbar & Footer: #292929
+
+SDSU Colors
+http://newscenter.sdsu.edu/brand/brand_central_2015/webguidelines.aspx
+SDSU Red
+HEX: #C41230
+RGB: 196, 18, 48
+
+SDSU Black
+HEX: #000
+
+SDSU Gold (accent)
+HEX: #D2C694
+RGB: 210, 198, 148
+*/
+
+/*
+    Might stylize the sidenav a little
+    different with about the same colors.
+*/
+.navbar-side {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #D2C694;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-left: -15px;
+    z-index: 1000;
+    min-height: 40rem;
+    border-right: 1px solid #888;
+}
+
+.navbar-side-item:hover {
+    background-color: #d9d0a6 !important;
+}
+
+.navbar-side-item {
+    padding-left: 1rem;
+    border-bottom: 1px solid #d9cfa6;
+    color: #444;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin: 0;
+    height: 4rem;
+}
+
+#content-view {
+    margin-left: -15px;
+}
+
+.component-padding {
+    padding: 10px 0px;
+}
+
+section.gpa {
+    border: solid 2px #C41230;
+    border-radius: 2px;
+    padding: 10px;
+    color: #C41230;
+}
