@@ -12,7 +12,7 @@
     </div>
 </div>
 <div [hidden]="!user">
-    <div class="container-fluid text-left" >
+    <div class="container-fluid text-left">
         <div class="row">
             <div class="col-sm-2 sidenav">
                 <ul class="navbar-side" id="navbarSide">
@@ -42,8 +42,6 @@
                         <section class="gpa">Major GPA: 3.56</section>
                     </div>
                 </div>
-
-
                 <!-- Requirements Componenent -->
                 <!-- *ngIf for showing the requirements when the button
                 is pushed -->
@@ -59,19 +57,24 @@
                 would work) doesn't work the way it is working
                 here.
             -->
-            <div *ngIf="show == 2">
-                <div class="row component-padding" style="padding-top: 20px;">
-                    <div class="col-6">
-                        <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                <div *ngIf="show == 2">
+                    <div class="row component-padding" style="padding-top: 20px;">
+                        <div class="col-6">
+                            <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                        </div>
                     </div>
-                </div>
-                <div class="row component-padding">
-                    <div class="col-6">
-                        <semester></semester>
+                    <div class="row component-padding">
+                        <div *ngFor="let semester of semesters | async;" class="col-6" style="margin-bottom: 10px;">
+                            <div class="card" id="semester">
+                                <div class="card-header">
+                                    {{semester.name}}
+                                </div>
+                                <semesters></semesters>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
