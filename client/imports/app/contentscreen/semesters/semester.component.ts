@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
@@ -10,11 +10,13 @@ import 'rxjs/add/operator/map';
 import { Courses } from '../../../../../both/collections/courses.collection';
 import { SemesterCourses } from '../../../../../both/collections/semestercourses.collection';
 import { Semesters } from '../../../../../both/collections/semesters.collection';
+import { ACourses } from '../../../../../both/collections/acourses.collection';
 /*
   Import models
 */
 import { Semester } from '../../../../../both/models/semester.model';
 import { Course } from '../../../../../both/models/course.model';
+import { ACourse } from '../../../../../both/models/acourse.model';
 import { Observable } from 'rxjs/Observable';
 /*
   Import any other internal components here.
@@ -32,6 +34,7 @@ import style from './semester.component.scss';
   OnInit & OnDestroy may want to be implemented later.
 */
 export class SemesterComponent {
+  @Input() semester: Semester;
   courses: Observable<Course[]>;
   semestercourses: Observable<Course[]>;
   semesters: Observable<Semester[]>;
@@ -48,6 +51,7 @@ export class SemesterComponent {
     this.courses = Courses.find({}).zone();
     this.semestercourses = SemesterCourses.find({}).zone();
     this.semesters = Semesters.find({}).zone();
+    var currentSemester = "";
     /*
       Call subscribe on these subscriptions.
     */
@@ -56,6 +60,14 @@ export class SemesterComponent {
     this.semestersSub = MeteorObservable.subscribe('semesters').subscribe();
   }
 
+  setSemester(semester): string {
+    currentSemester = semester;
+    return currentSemester;
+  }
+
+  getSemester(): string {
+    return currentSemester;
+  }
   /*
     ngOnInit() could be used here which happens after the constructor
     
@@ -79,7 +91,7 @@ export class SemesterComponent {
   /*
     addCourses() takes the QueuedCourses and Adds them to the SemesterCourses.
   */
-  addCourses(course): void {
-    Meteor.call('addCourseToSemester', course);
+  addCourses(course, semester): void {
+    Meteor.call('addCourseToAssignedCourses', course, semester);
   }
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Meteor } from 'meteor/meteor';
-import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
@@ -27,7 +26,7 @@ import style from './contentscreen.component.scss';
 })
 
 @InjectUser('user')
-export class ContentscreenComponent implements OnInit {
+export class ContentscreenComponent {
 	user: Meteor.User;
   	semesters: Observable<Semester[]>;
 

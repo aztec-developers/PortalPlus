@@ -1,43 +1,48 @@
-<table class="table table-hover" style="font-size: 14px;">
-    <tr>
-        <th>Units | Class Name</th>
-        <th>Class Number</th>
-        <th>Teacher</th>
-    </tr>
-    <!-- SemesterCourses are now being pull from the database using *ngFor
+<div class="card" id="semester">
+    <div class="card-header">
+        {{semester.name}}
+    </div>
+    <table class="table table-hover" style="font-size: 14px;">
+        <tr>
+            <th>Units | Class Name</th>
+            <th>Class Number</th>
+            <th>Teacher</th>
+        </tr>
+        <!-- SemesterCourses are now being pull from the database using *ngFor
         {{course.parameter}} pulls that parameter for that course
         and inserts it, the button will use the removeCourse() function
         to remove that course from the courses database. -->
-    <tr *ngFor="let course of semestercourses | async;">
-        <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp;{{course.name}}</td>
-        <td>{{course.label}}</td>
-        <td>Edwards <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class" (click)="removeCourse(course)"></span></td>
-    </tr>
-</table>
-<button type="button" class="list-group-item list-group-item-action justify-content-between" data-toggle="modal" style="width: 100%;" data-target="#addClass">
-    Add a Class
-    <span class="fa fa-plus text-danger" title="Delete Class"></span>
-</button>
-<div id="addClass" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Classes to Summer 2017 Semester</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
+        <tr *ngFor="let course of acourses | async;">
+            <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.userID}}</span>&nbsp;{{course.name}}</td>
+            <td>{{course.label}}</td>
+            <td>Edwards <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class" (click)="removeCourse(course)"></span></td>
+        </tr>
+    </table>
+    <button (click)="setSemester(this.semester)" type="button" class="list-group-item list-group-item-action justify-content-between" data-toggle="modal" style="width: 100%;" data-target="#addClass">
+        Add a Class
+        <span class="fa fa-plus text-danger" title="Delete Class"></span>
+    </button>
+    <div id="addClass" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Classes to Summer 2017 Semester</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div style="overflow-y: scroll; height: 300px;">
-                    <table id="tableClasses" class="table table-hover" style="font-size: 14px;">
-                        <tbody>
-                            <tr *ngFor="let course of courses | async" (click)="addCourses(course)" style="border-top: none;" data-dismiss="modal">
-                                <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp; {{course.name}}</td>
-                                <td>{{course.label}}</td>
-                                <td>{{course.teacher}} <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="modal-body">
+                    <div class="input-group">
+                    </div>
+                    <div style="overflow-y: scroll; height: 300px;">
+                        <table id="tableClasses" class="table table-hover" style="font-size: 14px;">
+                            <tbody>
+                                <tr *ngFor="let course of courses | async" (click)="addCourses(course, getSemester())" style="border-top: none;" data-dismiss="modal">
+                                    <td><span class="badge badge-default" style="vertical-align: text-top;">{{course.units}}</span>&nbsp; {{course.name}}</td>
+                                    <td>{{course.label}}</td>
+                                    <td>{{course.teacher}} <span class="fa fa-close text-danger float-right" style="padding-top: 2px; color: #C60000;" title="Delete Class"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
