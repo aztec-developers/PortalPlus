@@ -1,5 +1,5 @@
-import { SemesterComponent } from './semester.component';
+import { SemestersComponent } from './semesters.component';
 
 export const SEMESTERS_DECLARATIONS = [
-  SemesterComponent
+  SemestersComponent
 ];
