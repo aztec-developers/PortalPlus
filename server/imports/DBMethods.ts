@@ -29,7 +29,7 @@ export const ServerDBMethods =
     SemesterCourses.insert(course);
 =======
   //   SemesterCourses.insert(course);
-  // },
+   },
   addCourseToAssignedCourses: function(course, semester) {
     ACourses.insert({semesterID: semester._id, courseID: course._id, userID: this.userId});
 >>>>>>> Stashed changes
