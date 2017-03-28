@@ -1,3 +1,31 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Logo</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">WebPortal</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Information</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">About Us</a>
+                    <a class="dropdown-item" href="#">Join Us</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- this stuff is hidden if the user is logged out -->
+    <div [hidden]="!user">
+        <!-- <span>{{ user | displayName }}</span> -->
+         <a [routerLink]="['/']" class="btn btn-outline-warning" (click)="logout()">SignOut</a>
+    </div>
+</nav>
 
 <div>
   <router-outlet></router-outlet>
