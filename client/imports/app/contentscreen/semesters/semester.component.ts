@@ -86,4 +86,5 @@ export class SemesterComponent {
 
     Meteor.call('addSemester', semester);
   }
+  
 }

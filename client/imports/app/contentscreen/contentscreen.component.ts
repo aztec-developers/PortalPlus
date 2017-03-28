@@ -7,13 +7,13 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
 /*
-  Import collections
+Import collections
 */
 import { Courses } from '../../../../both/collections/courses.collection';
 import { Semesters } from '../../../../both/collections/semesters.collection';
 /*
-  Import models
- */
+Import models
+*/
 import { Semester } from '../../../../both/models/semester.model';
 import { Observable } from 'rxjs/Observable';
 
@@ -29,6 +29,7 @@ import style from './contentscreen.component.scss';
 @InjectUser('user')
 export class ContentscreenComponent {
 	user: Meteor.User;
+<<<<<<< Updated upstream
   	semesters: Observable<Semester[]>;
 		yearInc: number = 2017;
 		position: number = 0;
@@ -37,13 +38,24 @@ export class ContentscreenComponent {
 
   	/*
 	    Assign Subscriptions.
+=======
+	semesters: Observable<Semester[]>;
+	yearInc: number = 2017;
+	position: number = 0;
+	season: string;
+	idCount: number = 0;
+	
+	/*
+	Assign Subscriptions.
+>>>>>>> Stashed changes
 	*/
 	semestersSub: Subscription;
-
+	
 	constructor(
-    	private route: ActivatedRoute
-  	)	{
+		private route: ActivatedRoute
+	)	{
 		this.semesters = Semesters.find({}).zone();
+<<<<<<< Updated upstream
 	    /*
 	      Call subscribe on these subscriptions.
 	    */
@@ -79,4 +91,41 @@ export class ContentscreenComponent {
 
 		
 
+=======
+		/*
+		Call subscribe on these subscriptions.
+		*/
+		this.semestersSub = MeteorObservable.subscribe('semesters').subscribe();
+		
+	}
+	//Properly Incrementing years and seasons while also calling the DBMethod of add Semester.
+	addNewSemester(semester: Semester): void{
+		if(this.position%2== 0){
+			this.season = "Fall";
+			Meteor.call('addSemester', semester,this.yearInc,this.season);
+			this.position++;
+			//console.log(this.yearInc + "\n" + this.season + "\n" + this.position);
+		}
+		else{
+			this.season = "Spring";
+			Meteor.call('addSemester', semester,this.yearInc++,this.season);
+			this.position++;
+			
+		}
+		
+	}
+	//Properly Decrementing years and seasons while also calling the DBMethod of remove Semester.
+	removeNewSemester(semester: Semester): void{
+		Meteor.call('removeSemester',semester);
+		this.position--;
+		if(this.position%2 != 0 ){
+			this.yearInc--;
+			
+		}
+		
+	}
+	
+	
+	
+>>>>>>> Stashed changes
 }

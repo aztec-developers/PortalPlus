@@ -25,7 +25,14 @@ export const ServerDBMethods =
     //      SemesterCourses.insert(course);
     // });
     // Meteor.call('removeAllQueuedCourses');
+<<<<<<< Updated upstream
     SemesterCourses.insert(course);
+=======
+  //   SemesterCourses.insert(course);
+  // },
+  addCourseToAssignedCourses: function(course, semester) {
+    ACourses.insert({semesterID: semester._id, courseID: course._id, userID: this.userId});
+>>>>>>> Stashed changes
   },
   addSemester: function(semester: Semester, yearInc: number,season: string){
     Semesters.insert({name:season,year:yearInc});
