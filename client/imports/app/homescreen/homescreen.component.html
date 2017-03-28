@@ -1,8 +1,8 @@
 <!-- Homescreen page that every user will see until they login or signup -->
 
 <!-- div to make it so the user will see this if not logged in -->
-<!--
-<div [hidden]="user"> -->
+
+<ournav></ournav>
 
 <div class="container-fluid text-left" id="homescreen-container">
     <div class="row">
@@ -10,7 +10,7 @@
         </div>
         <!-- Login/Sign Up section -->
         <div class="col-6 text-center" id="login-section">
-            <h2>Please Login or Signup</h2>
+            <h2>Please Login or Sign Up</h2>
             <p id="homescreen-intro">Organize Your Classes and See Your Progression.</p>
             <div class="row">
                 <div class="col-md-6">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-6">
                     <button type="button" class="btn btn-info" id="signup-button" data-toggle="modal" data-target="#signup">
-                        Signup
+                        Sign Up
                     </button>
                 </div>
                 <!-- Login modal -->
@@ -46,13 +46,6 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <!-- <div class="input-group">
-                                    <input type="text" class="form-control" id="login-username" placeholder="Username" aria-describedby="login-username">
-                                </div>
-                                <br>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="login-password" placeholder="Password" aria-describedby="login-password">
-                                </div> -->
                                 <signup></signup>
                             </div>
                         </div>

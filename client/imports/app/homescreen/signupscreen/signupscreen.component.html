@@ -1,0 +1,33 @@
+<div class="modal fade" id="signup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sign Up with PortalPlus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form  [formGroup]="addForm" (ngSubmit)="addDBUser()" class="modal-body">
+                <input type="text" placeholder="Username" formControlName="username">
+                <input type="text" placeholder="Password" formControlName="password">
+                <button type="submit" >Add</button>
+            
+                <!-- <div class="input-group">
+                    <input type="text" class="form-control" id="login-username" placeholder="Username" aria-describedby="login-username" formControlName="username">
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="login-password" placeholder="Password" aria-describedby="login-password" formControlName="password">
+                </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger float-right" data-dismiss="modal">Sign Up</button>
+            </div> -->
+          </form>
+
+            <div id="div1" *ngFor="let dbuser of dbusers | async">
+              <p>{{dbuser.username}}</p>
+              <p>{{dbuser.password}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

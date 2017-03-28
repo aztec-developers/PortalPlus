@@ -1,66 +1,86 @@
 <!-- Contentscreen user will be able to see after logging in -->
+<ournav></ournav>
 <!-- Side Nav -->
-<div class="container-fluid text-left" >
-    <div class="row">
-        <div class="col-sm-2 sidenav">
-            <ul class="navbar-side" id="navbarSide">
-                <!-- Made whole block clickable -->
-                <!-- click functions to show each part of the site in the content
-                view. -->
-                <li class="navbar-side-item" (click)="show = 1">Degree Evaluation</li>
-                <li class="navbar-side-item" (click)="show = 2">My Map</li>
-                <li class="navbar-side-item" (click)="show = 3">Course Catalog</li>
-                <li class="navbar-side-item" (click)="show = 4">Major Classes</li>
-                <li class="navbar-side-item" (click)="show = 5">Major Electives</li>
-            </ul>
-        </div>
-        <!-- Content View Page-->
-        <div class="col-lg-10 text-left" id="content-view">
-            <div class="row component-padding" style="padding-top: 20px;">
-                <div class="col-8">
-                    <section class="text-left">Your progress towards graduating is: <span style="color: #5CB85C; vertical-align: middle !important;">80%</span></section>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 20px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+<div *ngIf="!user">
+    <div class="jumbotron">
+        <h1 class="display-3">Hello, you need to sign in to view this page.</h1>
+        <hr class="my-4">
+        <p>Click here to get back to the login page</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/" role="button">Login Page</a>
+        </p>
+    </div>
+</div>
+<div [hidden]="!user">
+    <div class="container-fluid text-left">
+        <div class="row">
+            <div class="col-sm-2 sidenav">
+                <ul class="navbar-side" id="navbarSide">
+                    <!-- Made whole block clickable -->
+                    <!-- click functions to show each part of the site in the content
+                    view. -->
+                    <li class="navbar-side-item" (click)="show = 1">Degree Evaluation</li>
+                    <li class="navbar-side-item" (click)="show = 2">My Map</li>
+                    <li class="navbar-side-item" (click)="show = 3">Course Catalog</li>
+                    <li class="navbar-side-item" (click)="show = 4">Major Classes</li>
+                    <li class="navbar-side-item" (click)="show = 5">Major Electives</li>
+                </ul>
+            </div>
+            <!-- Content View Page-->
+            <div class="col-lg-10 text-left" id="content-view">
+                <div class="row component-padding" style="padding-top: 20px;">
+                    <div class="col-8">
+                        <section class="text-left">Your progress towards graduating is: <span style="color: #5CB85C; vertical-align: middle !important;">80%</span></section>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 20px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-center">
+                        <section class="gpa">GPA: 3.25</section>
+                    </div>
+                    <div class="col-2 text-center">
+                        <section class="gpa">Major GPA: 3.56</section>
                     </div>
                 </div>
-                <div class="col-2 text-center">
-                    <section class="gpa">GPA: 3.25</section>
+                <!-- Requirements Componenent -->
+                <!-- *ngIf for showing the requirements when the button
+                is pushed -->
+                <div *ngIf="show == 1" class="row component-padding">
+                    <div class="col-12">
+                        <requirements></requirements>
+                    </div>
                 </div>
-                <div class="col-2 text-center">
-                    <section class="gpa">Major GPA: 3.56</section>
-                </div>
-            </div>
-
-
-            <!-- Requirements Componenent -->
-            <!-- *ngIf for showing the requirements when the button
-            is pushed -->
-            <div *ngIf="show == 1" class="row component-padding">
-                <div class="col-12">
-                    <requirements></requirements>
-                </div>
-            </div>
-            <!-- Semesters Components -->
-            <!--
+                <!-- semester Components -->
+                <!--
                 Must be implemented this way, because putting
                 the col-6 inside the component (which you think
                 would work) doesn't work the way it is working
                 here.
             -->
-            <div *ngIf="show == 2">
-                <div class="row component-padding" style="padding-top: 20px;">
-                    <div class="col-6">
-                        <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                <div *ngIf="show == 2">
+                    <div class="row component-padding" style="padding-top: 20px;">
+                        <div class="col-6">
+                            <button class="btn btn-outline-danger" type="submit" (click)="addNewSemester(semester)">Add Semester</button>
+
+                        </div>
                     </div>
-                </div>
-                <div class="row component-padding">
-                    <div class="col-6">
-                        <semesters></semesters>
+                    <div class="row component-padding">
+                        <div *ngFor="let semester of semesters | async;" class="col-6" style="margin-bottom: 10px;" >
+
+                            <div class="card" id="semester">
+                                <div class="card-header">
+                                    {{semester.name}}
+                                    {{semester.year}}
+                                    <button id="remove-button" class="btn btn-outline-danger float-right" type="submit" (click)="removeNewSemester(semester)">Remove</button>
+                                </div>
+                                <semesters></semesters>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
