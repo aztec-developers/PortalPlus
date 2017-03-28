@@ -27,9 +27,13 @@ import style from './contentscreen.component.scss';
 })
 
 @InjectUser('user')
-export class ContentscreenComponent implements OnInit {
+export class ContentscreenComponent {
 	user: Meteor.User;
   	semesters: Observable<Semester[]>;
+		yearInc: number = 2017;
+		position: number = 0;
+		season: string;
+		idCount: number = 0;
 
   	/*
 	    Assign Subscriptions.
@@ -44,5 +48,35 @@ export class ContentscreenComponent implements OnInit {
 	      Call subscribe on these subscriptions.
 	    */
 	    this.semestersSub = MeteorObservable.subscribe('semesters').subscribe();
+
   	}
+  	//Adding semester and components 
+    addNewSemester(semester: Semester): void{
+			if(this.position%2== 0){
+				this.season = "Fall";
+      	Meteor.call('addSemester', semester,this.yearInc,this.season);
+				this.position++;
+				//console.log(this.yearInc + "\n" + this.season + "\n" + this.position);
+		}
+			else{
+				this.season = "Spring";
+				Meteor.call('addSemester', semester,this.yearInc++,this.season);
+				this.position++;
+
+			}
+			
+    }
+    	//Removing semester and components
+		removeNewSemester(semester: Semester): void{
+			Meteor.call('removeSemester',semester);
+			this.position--;
+			if(this.position%2 != 0 ){
+				this.yearInc--;
+
+			}
+			
+		}
+
+		
+
 }

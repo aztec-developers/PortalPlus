@@ -60,19 +60,25 @@
                 <div *ngIf="show == 2">
                     <div class="row component-padding" style="padding-top: 20px;">
                         <div class="col-6">
-                            <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                            <button class="btn btn-outline-danger" type="submit" (click)="addNewSemester(semester)">Add Semester</button>
+
                         </div>
                     </div>
                     <div class="row component-padding">
-                        <div *ngFor="let semester of semesters | async;" class="col-6" style="margin-bottom: 10px;">
+                        <div *ngFor="let semester of semesters | async;" class="col-6" style="margin-bottom: 10px;" >
+
                             <div class="card" id="semester">
                                 <div class="card-header">
                                     {{semester.name}}
+                                    {{semester.year}}
+                                    <button id="remove-button" class="btn btn-outline-danger float-right" type="submit" (click)="removeNewSemester(semester)">Remove</button>
                                 </div>
                                 <semesters></semesters>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

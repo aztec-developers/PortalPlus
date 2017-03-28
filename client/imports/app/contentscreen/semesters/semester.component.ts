@@ -58,12 +58,12 @@ export class SemesterComponent {
 
   /*
     ngOnInit() could be used here which happens after the constructor
-    
+
     ngOnInit() {
       this.parties = Parties.find({}).zone();
       this.partiesSub = MeteorObservable.subscribe('parties').subscribe();
     }
-   
+
     ngOnDestroy() {
       this.partiesSub.unsubscribe();
     }
@@ -81,5 +81,9 @@ export class SemesterComponent {
   */
   addCourses(course): void {
     Meteor.call('addCourseToSemester', course);
+  }
+  addNewSemester(semester): void{
+
+    Meteor.call('addSemester', semester);
   }
 }
