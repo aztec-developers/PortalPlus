@@ -31,9 +31,4 @@ export const ServerDBMethods =
   addCourseToAssignedCourses: function(course, semester) {
     ACourses.insert({semesterID: semester._id, courseID: course._id, userID: this.userId});
   },
-
-  tester: function() {
-    return this.userId;
-  }
-
 }
