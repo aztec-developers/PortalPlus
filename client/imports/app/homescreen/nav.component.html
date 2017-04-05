@@ -23,6 +23,6 @@
     <!-- this stuff is hidden if the user is logged out -->
     <div *ngIf="user">
         <!-- <span>{{ user | displayName }}</span> -->
-         <a [routerLink]="['/']" class="btn btn-outline-warning" (click)="logout()">Sign Out</a>
+         <a [routerLink]="['/']" class="btn btn-outline-danger" (click)="logout()">Sign Out</a>
     </div>
 </nav>
