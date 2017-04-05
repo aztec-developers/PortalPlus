@@ -4,6 +4,7 @@ import { ServerDBMethods } from './imports/DBMethods';
 import { loadCourses } from './imports/fixtures/courses';
 import { loadSemesterCourses } from './imports/fixtures/semestercourses';
 import { loadSemesters } from './imports/fixtures/semesters';
+import { loadACourses } from './imports/fixtures/acourses';
 import { loadReqs } from './imports/fixtures/reqs';
 
 /*
@@ -14,6 +15,7 @@ import './imports/publications/courses';
 import './imports/publications/semestercourses';
 import './imports/publications/reqs';
 import './imports/publications/semesters';
+import './imports/publications/acourses';
 /*
 Starting up the universal database in the server
 */
@@ -22,5 +24,6 @@ Meteor.startup(() => {
   	loadSemesterCourses();
   	loadReqs();
   	loadSemesters();
+  	loadACourses();
   	return Meteor.methods(ServerDBMethods);
 });

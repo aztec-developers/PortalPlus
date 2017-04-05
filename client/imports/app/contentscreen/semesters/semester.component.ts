@@ -38,12 +38,14 @@ export class SemesterComponent {
   courses: Observable<Course[]>;
   semestercourses: Observable<Course[]>;
   semesters: Observable<Semester[]>;
+  acourses: Observable<ACourse[]>;
   /*
     Assign Subscriptions.
   */
   coursesSub: Subscription;
   semestercoursesSub: Subscription;
   semestersSub: Subscription;
+  acoursesSub: Subscription;
 
   constructor(
     private route: ActivatedRoute
@@ -51,6 +53,7 @@ export class SemesterComponent {
     this.courses = Courses.find({}).zone();
     this.semestercourses = SemesterCourses.find({}).zone();
     this.semesters = Semesters.find({}).zone();
+    this.acourses = ACourses.find({}).zone();
     var currentSemester = "";
     /*
       Call subscribe on these subscriptions.
@@ -58,6 +61,7 @@ export class SemesterComponent {
     this.coursesSub = MeteorObservable.subscribe('courses').subscribe();
     this.semestercoursesSub = MeteorObservable.subscribe('semestercourses').subscribe();
     this.semestersSub = MeteorObservable.subscribe('semesters').subscribe();
+    this.acoursesSub = MeteorObservable.subscribe('acourses').subscribe();
   }
 
   setSemester(semester): string {
@@ -67,6 +71,18 @@ export class SemesterComponent {
 
   getSemester(): string {
     return currentSemester;
+  }
+
+  getUnits(courseID): string {
+    return Courses.findOne({_id: courseID}).units;
+  }
+
+  getName(courseID): string {
+    return Courses.findOne({_id: courseID}).name;
+  }
+
+  getClassNumber(courseID): string {
+    return Courses.findOne({_id: courseID}).label;
   }
   /*
     ngOnInit() could be used here which happens after the constructor
