@@ -18,7 +18,7 @@ export const ServerDBMethods =
   //     QueuedCourses.remove({});
  //  },
   removeCourseFromSemester: function(course: Course) {
-    SemesterCourses.remove(course._id);
+    ACourses.remove(course._id);
   },
   // addCourseToSemester: function(course: Course) {
     // var coursesToAdd = QueuedCourses.find({}, {fields : {_id : 0}}).fetch();    
@@ -30,6 +30,10 @@ export const ServerDBMethods =
   // },
   addCourseToAssignedCourses: function(course, semester) {
     ACourses.insert({semesterID: semester._id, courseID: course._id, userID: this.userId});
+  },
+
+  tester: function() {
+    return this.userId;
   }
 
 }
