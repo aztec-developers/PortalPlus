@@ -50,6 +50,7 @@ export class ContentscreenComponent  {
 	    */
 	    this.semestersSub = MeteorObservable.subscribe('semesters').subscribe();
   	}
+	//Algorithm for properly incrementing years and seasons when adding semesters. 
   	addNewSemester(semester: Semester): void{
 		if(this.position%2== 0){
 			this.season = "Fall";
@@ -63,16 +64,10 @@ export class ContentscreenComponent  {
 			this.position++;
 
 		} 
-		//console.log(Semesters.find().sort({$natural:-1})):
-	 	// var i = 0;
-	 	// for(i = 0; i <= Semesters.find().cursor.count(); i++){
-	 	// 	if(i == Semesters.find().cursor.count()){
-	 	// 		document.getElementById("remove-function-button").style.visibility="visible";
-	 	// 	}
-	 	// }
+		
 
 	}
-
+	//Properly decrementing years and seasons when deleting a semester. 
 	  removeNewSemester(semester: Semester): void{
     Meteor.call('removeSemester',semester);
     this.position--;
@@ -81,19 +76,5 @@ export class ContentscreenComponent  {
 
     }
 }
-	 removeButton(semester: Semester): void{
-	 	
-	 	var i = 0;
-	 	// for(i = 0; i <= Semesters.find().cursor.count(); i++){
-	 	// 	if(i == Semesters.find().cursor.count()){
-	 	// 		document.getElementById("remove-function-button").style.visibility="visible";
-	 	// 	}
-	 	// }
-	 	// foreach(var semesters in Semesters){
-	 	// 	if(semesters == Semesters[Semesters.find().cursor.count()]){
-	 	// 		document.getElementById("function-button").style.visibility="visible";
-	 	// 	}
-	 	// }
-	 }
 	
 }
