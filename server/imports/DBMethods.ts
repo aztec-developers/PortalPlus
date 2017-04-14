@@ -30,6 +30,12 @@ export const ServerDBMethods =
   // },
   addCourseToAssignedCourses: function(course, semester) {
     ACourses.insert({semesterID: semester._id, courseID: course._id, userID: this.userId});
-  }
+  },
+  addSemester: function(semester: Semester, yearInc: number,season: string){
+    Semesters.insert({name:season+ " " + yearInc});
+  },
+  removeSemester: function(semester: Semester){
+    Semesters.remove(semester._id);
 
+  }
 }
