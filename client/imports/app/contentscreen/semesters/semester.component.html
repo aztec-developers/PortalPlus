@@ -10,12 +10,11 @@
         <th>Class Number</th>
         <th>Teacher</th>
     </tr>
- 
     <tr *ngFor="let record of acourses | async;">
         <template [ngIf]="record.userID == getUserId() && record.semesterID == this.semester._id">
-        <td><span class="badge badge-default" style="vertical-align: text-top;">{{getUnits(record.courseID)}}</span>&nbsp;{{getName(record.courseID)}}</td>
-        <td>{{getClassNumber(record.courseID)}}</td>
-        <td>Edwards <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class" (click)="removeCourse(record)"></span></td>
+            <td><span class="badge badge-default" style="vertical-align: text-top;">{{getUnits(record.courseID)}}</span>&nbsp;{{getName(record.courseID)}}</td>
+            <td>{{getClassNumber(record.courseID)}}</td>
+            <td>Edwards <span class="fa fa-close text-danger float-right remove" style="padding-top: 2px;" title="Delete Class" (click)="removeCourse(record)"></span></td>
         </template>
     </tr>
 </table>
@@ -48,4 +47,4 @@
         </div>
     </div>
 </div>
-</div>
+

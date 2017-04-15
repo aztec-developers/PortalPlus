@@ -87,6 +87,8 @@ export class SemesterComponent {
   getClassNumber(courseID): string {
     return Courses.findOne({_id: courseID}).label;
   }
+
+
   getUserId(): string {
     return Meteor.userId();
   }
