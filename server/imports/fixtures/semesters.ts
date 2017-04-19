@@ -8,10 +8,10 @@ export function loadSemesters() {
 	// Semesters.find({});
 	if (Semesters.find().cursor.count() === 0) {
 	    const semesters: Semester[] = [{
-	    	name: 'Spring 2017'
+	    	name: 'Fall 2017'
 	    }, 
 	    {
-	    	name: 'Fall 2017'
+	    	name: 'Spring 2017'
 	    }
 
 	    ];

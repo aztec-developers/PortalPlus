@@ -7,4 +7,6 @@ export interface Course extends CollectionObject {
   name: string;
   importance: string;
   status: string;
+  evaluation: string;
+  description: string;
 }

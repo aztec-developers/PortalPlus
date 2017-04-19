@@ -57,16 +57,24 @@
                 would work) doesn't work the way it is working
                 here.
             -->
+                <!--Showing the add semester working and the remove button for the last semester in collection-->
                 <div *ngIf="show == 2">
                     <div class="row component-padding" style="padding-top: 20px;">
                         <div class="col-6">
-                            <button class="btn btn-outline-danger" type="submit">Add Semester</button>
+                            <button class="btn btn-outline-danger" id="function-button" type="submit" (click)="addNewSemester(semester)">Add Semester</button>
                         </div>
                     </div>
                     <div class="row component-padding">
-                        <div class="col-6" style="margin-bottom: 10px;">
-                            <semesters *ngFor="let semester of semesters | async;" 
-                                [semester]="semester">
+                        <div class="col-6" style="margin-bottom: 10px;" *ngFor="let semester of semesters | async; let last=last">
+                            <div class="card" id="semester">
+                                <div class="card-header">
+                                    {{semester.name}}
+                                     
+                                        <button *ngIf="last==true" class="btn btn-outline-danger float-right" id="remove-function-button" type="submit" (click)="removeNewSemester(semester)">Remove</button>
+                                    
+                                </div>
+                            </div>
+                            <semesters [semester]="semester">
                             </semesters>
                         </div>
                     </div>
@@ -74,4 +82,3 @@
             </div>
         </div>
     </div>
-</div>

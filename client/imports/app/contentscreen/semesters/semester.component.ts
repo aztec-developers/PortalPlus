@@ -46,6 +46,8 @@ export class SemesterComponent {
   semestercoursesSub: Subscription;
   semestersSub: Subscription;
   acoursesSub: Subscription;
+     yearInc: number = 2018;
+   position: number = 0;
 
   constructor(
     private route: ActivatedRoute
@@ -55,6 +57,7 @@ export class SemesterComponent {
     this.semesters = Semesters.find({}).zone();
     this.acourses = ACourses.find({}).zone();
     var currentSemester = "";
+
     /*
       Call subscribe on these subscriptions.
     */
@@ -85,10 +88,10 @@ export class SemesterComponent {
     return Courses.findOne({_id: courseID}).label;
   }
 
+
   getUserId(): string {
     return Meteor.userId();
   }
-
   /*
     ngOnInit() could be used here which happens after the constructor
     
@@ -114,5 +117,6 @@ export class SemesterComponent {
   */
   addCourses(course, semester): void {
     Meteor.call('addCourseToAssignedCourses', course, semester);
+
   }
 }
