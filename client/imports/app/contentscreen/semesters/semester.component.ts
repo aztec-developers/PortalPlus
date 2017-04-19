@@ -92,24 +92,12 @@ export class SemesterComponent {
   getUserId(): string {
     return Meteor.userId();
   }
-  /*
-    ngOnInit() could be used here which happens after the constructor
-    
-    ngOnInit() {
-      this.parties = Parties.find({}).zone();
-      this.partiesSub = MeteorObservable.subscribe('parties').subscribe();
-    }
-   
-    ngOnDestroy() {
-      this.partiesSub.unsubscribe();
-    }
-  */
 
   /*
     removeCourse() takes the course in the Semester and removes it.
   */
-  removeCourse(course: Course): void {
-    Meteor.call('removeCourseFromSemester', course);
+  removeCourse(course: Course, semester: Semester): void {
+    Meteor.call('removeCourseFromSemester', course, semester);
   }
 
   /*
